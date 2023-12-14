@@ -1,8 +1,10 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
+import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 
 import { Banner, Button, Icon, Image, Text } from 'blockchain-info-components'
+import { actions } from 'data'
 import { media } from 'services/styles'
 
 import { LoginWrapper } from '../model'
@@ -78,7 +80,10 @@ const SuccessWrapper = styled.div`
   flex-direction: column;
 `
 
-const Success = ({ approver, authActions, deviceAuthorized, requester }) => {
+const Success = ({ approver, deviceAuthorized, requester }) => {
+  const dispatch = useDispatch()
+  const authorizeDevice = (state: boolean) => dispatch(actions.auth.authorizeVerifyDevice(state))
+
   if (deviceAuthorized) {
     return (
       <LoginWrapper>
@@ -231,7 +236,7 @@ const Success = ({ approver, authActions, deviceAuthorized, requester }) => {
         <ApproveRejectButtons
           data-e2e='approveLogin'
           nature='warning'
-          onClick={() => authActions.authorizeVerifyDevice(true)}
+          onClick={() => authorizeDevice(true)}
         >
           <FormattedMessage id='modals.mobilenumberverify.verify' defaultMessage='Verify' />
         </ApproveRejectButtons>
@@ -241,7 +246,7 @@ const Success = ({ approver, authActions, deviceAuthorized, requester }) => {
         <ApproveRejectButtons
           data-e2e='rejectLogin'
           nature='primary'
-          onClick={() => authActions.authorizeVerifyDevice(false)}
+          onClick={() => authorizeDevice(false)}
         >
           <FormattedMessage id='scenes.authorizelogin.reject' defaultMessage='Reject' />
         </ApproveRejectButtons>

@@ -1,29 +1,17 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { FormattedMessage } from 'react-intl'
-import { LinkContainer } from 'react-router-bootstrap'
 import { Field } from 'redux-form'
 import styled from 'styled-components'
 
-import { HeartbeatLoader, Image, Link, Text } from 'blockchain-info-components'
-import Form from 'components/Form/Form'
+import { HeartbeatLoader, Image, Text } from 'blockchain-info-components'
 import FormGroup from 'components/Form/FormGroup'
 import FormItem from 'components/Form/FormItem'
 import TextBox from 'components/Form/TextBox'
 import { Wrapper } from 'components/Public'
-import { LOGIN_FORM } from 'data/auth/model'
-import { LoginSteps, ProductAuthOptions } from 'data/types'
-import { required, validWalletIdOrEmail } from 'services/forms'
-import { removeWhitespace } from 'services/forms/normalizers'
 import { media } from 'services/styles'
 
 import { Props } from '../..'
-import {
-  ActionButton,
-  GuidError,
-  LinkRow,
-  LoginFormLabel,
-  SoFiWrapperWithPadding
-} from '../../model'
+import { ActionButton, LinkRow, LoginFormLabel, SoFiWrapperWithPadding } from '../../model'
 
 const LoginWrapper = styled(Wrapper)`
   display: flex;
@@ -40,7 +28,7 @@ const FormBody = styled.div`
 `
 
 const SofiVerifyID = (props: Props) => {
-  const { busy, formActions, formValues, invalid, submitting } = props
+  const { busy, formValues, invalid, submitting } = props
 
   const validSsn = formValues?.sofiLoginSSN?.length === 4
 

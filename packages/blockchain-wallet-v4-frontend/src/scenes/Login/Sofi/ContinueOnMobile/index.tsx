@@ -1,15 +1,11 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
-import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 
-import { Badge, Button, Image, Text } from 'blockchain-info-components'
+import { Badge, Image, Text } from 'blockchain-info-components'
 import { Wrapper } from 'components/Public'
-import { actions } from 'data'
-import { isBrowserAndroid, isBrowserIOS } from 'services/browser'
-import { isMobile, media } from 'services/styles'
+import { media } from 'services/styles'
 
-import { Props } from '../..'
 import { CircleBackground } from '../../model'
 
 const ContentWrapper = styled.div`
@@ -37,21 +33,7 @@ const AppButtons = styled.footer`
   `};
 `
 
-const ContinueOnMobile = (props: Props) => {
-  const dispatch = useDispatch()
-  // Add check here to make sure that there is wallet data
-  // route should navigate to login if there's no wallet data
-  const sofiWalletRedirect = () => {
-    dispatch(actions.router.push('/home'))
-  }
-
-  const downloadMobileApp = () => {
-    if (isBrowserAndroid()) {
-      window.open('https://play.google.com/store/apps/details?id=piuk.blockchain.android', '_blank')
-    } else if (isBrowserIOS()) {
-      window.open('https://itunes.apple.com/us/app/blockchain-bitcoin-wallet/id493253309', '_blank')
-    }
-  }
+const ContinueOnMobile = () => {
   return (
     <Wrapper>
       <ContentWrapper>
