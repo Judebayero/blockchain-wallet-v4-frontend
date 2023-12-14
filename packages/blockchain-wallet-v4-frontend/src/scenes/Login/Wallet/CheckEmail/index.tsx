@@ -79,7 +79,6 @@ const CheckEmail = (props: Props) => {
         <BackArrowHeader
           formValues={props.formValues}
           handleBackArrowClick={props.handleBackArrowClickWallet}
-          product={props.productAuthMetadata.product}
         />
         <FormBody>
           <CircleBackground color='blue600'>
